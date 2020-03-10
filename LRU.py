@@ -9,7 +9,7 @@ def minDesitance(dictBackward,frameSize):
 
 def LRU(str,frameSize):
     keep_list = []
-    checkHit = FALSE
+    checkHit = False
     pagefault_count=0
     index = 0
     for i in range(len(str)):
@@ -17,12 +17,12 @@ def LRU(str,frameSize):
             for j in range(len(keep_list)):
                 #Page Hit!!
                 if keep_list[j] == str[i]:
-                    checkHit = TRUE
+                    checkHit = True
                     break
                 else:
                     continue
 
-        if checkHit == FALSE:
+        if checkHit == False:
             if(len(keep_list)==frameSize):
                 keepBackward_list = []
                 dictBackward = {}
@@ -33,19 +33,19 @@ def LRU(str,frameSize):
 
                     #เช็คระยะของค่าในkeep_list ว่าในkeepForward_list แต่ละค่ามีระยะเท่าไหร่
                     for id in range(len(keep_list)):
-                        found = FALSE
+                        found = False
                         for temp in range(len(keepBackward_list)):
                             if keep_list[id] == keepBackward_list[temp]:
                                 dictBackward[id] = temp
-                                found = TRUE
+                                found = True
                     indexDelete = minDesitance(dictBackward,frameSize)
                     del keep_list[indexDelete]
             keep_list.append(str[i])
             index += 1
             pagefault_count += 1
 
-        if checkHit == TRUE:
-            checkHit = FALSE
+        if checkHit == True:
+            checkHit = False
             index += 1
             continue
 

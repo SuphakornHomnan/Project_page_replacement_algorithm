@@ -1,3 +1,5 @@
 /.idea
 /image
 /Project ch9.iml
+/.vscode
+/__pycache__

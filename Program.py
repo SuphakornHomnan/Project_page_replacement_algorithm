@@ -1,6 +1,6 @@
 from FIFO import FIFO
-from LRU import min,LRU
-from Optimal_algorithm import max,Optimal
+from LRU import minDesitance,LRU
+from Optimal_algorithm import maxDistance,Optimal
 # importing the required module
 import matplotlib.pyplot as plt
 

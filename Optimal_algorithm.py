@@ -11,7 +11,7 @@ def maxDistance(dictForward,frameSize):
 
 def Optimal(str,frameSize):
     keep_list = []
-    checkHit = TRUE
+    checkHit = False
     pagefault_count=0
     index = 0
     for i in range(len(str)):
@@ -19,12 +19,12 @@ def Optimal(str,frameSize):
             for j in range(len(keep_list)):
                 # ถ้าpage hit
                 if keep_list[j] == str[i]:
-                    checkHit = 1
+                    checkHit = True
                     break
                 else:
                     continue
 
-        if checkHit == FALSE:
+        if checkHit == False:
                 if(len(keep_list)==frameSize):
                     keepForward_list = []
                     dictForward = {}
@@ -35,12 +35,13 @@ def Optimal(str,frameSize):
 
                         #เช็คระยะของค่าในkeep_list ว่าในkeepForward_listแต่ละค่ามีระยะเท่าไหร่
                         for id in range(len(keep_list)):
-                            found = FALSE
+                            found = False
                             for temp in range(len(keepForward_list)):
                                 if keep_list[id] == keepForward_list[temp]:
                                     dictForward[id] = temp
-                                    found = TRUE
-                            if found == FALSE:
+                                    found = True
+                                    break
+                            if found == False:
                                 dictForward[id] = 99999999999999
                             else:
                                 continue
@@ -50,8 +51,8 @@ def Optimal(str,frameSize):
                 index += 1
                 pagefault_count += 1
 
-        if checkHit == TRUE:
-            checkHit = FALSE
+        if checkHit == True:
+            checkHit = 0
             index += 1
             continue
     return pagefault_count
